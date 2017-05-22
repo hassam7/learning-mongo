@@ -1,0 +1,25 @@
+{
+  "name": "learning-mongo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hassam7/learning-mongo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hassam7/learning-mongo/issues"
+  },
+  "homepage": "https://github.com/hassam7/learning-mongo#readme",
+  "dependencies": {
+    "mocha": "^3.4.1",
+    "mongoose": "^4.10.1",
+    "nodemon": "^1.11.0"
+  }
+}
