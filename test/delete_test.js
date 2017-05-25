@@ -22,12 +22,19 @@ describe("Deleting a User", () => {
                 name: 'Tom'
             });
         }).then((result) => {
-            assert(result===null);
+            assert(result === null);
             done();
         });
     });
-    it("class method remove", () => {
-        
+    it("class method remove", (done) => {
+        User.remove({
+            name: 'Tom'
+        }).then(() => {
+            User.findOne({name:'Tom'}).then((result)=>{
+                assert(result===null);
+                done();
+            })
+        });
 
     });
     it("class method findAndRemove", () => {
