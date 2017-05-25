@@ -9,15 +9,15 @@ describe("Deleting a User", () => {
     //Model will remove according to criteria provided to it.
     let tom;
     beforeEach((done) => {
-        joe = new User({
+        tom = new User({
             name: "Tom"
         });
-        joe.save().then(() => {
+        tom.save().then(() => {
             done();
         })
     });
     it("model instance remove", (done) => {
-        joe.remove().then(() => {
+        tom.remove().then(() => {
             return User.findOne({
                 name: 'Tom'
             });
@@ -51,7 +51,14 @@ describe("Deleting a User", () => {
             })
         });
     });
-    it("class method findByIdAndRemove", () => {
-
+    it("class method findByIdAndRemove", (done) => {
+        User.findByIdAndRemove(tom._id).then(() => {
+            User.findOne({
+                name: 'Tom'
+            }).then((result) => {
+                assert(result === null);
+                done();
+            })
+        });
     });
 });
