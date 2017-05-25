@@ -30,15 +30,26 @@ describe("Deleting a User", () => {
         User.remove({
             name: 'Tom'
         }).then(() => {
-            User.findOne({name:'Tom'}).then((result)=>{
-                assert(result===null);
+            User.findOne({
+                name: 'Tom'
+            }).then((result) => {
+                assert(result === null);
                 done();
             })
         });
 
     });
-    it("class method findAndRemove", () => {
-
+    it("class method findAndRemove", (done) => {
+        User.findOneAndRemove({
+            name: 'Tom'
+        }).then(() => {
+            User.findOne({
+                name: 'Tom'
+            }).then((result) => {
+                assert(result === null);
+                done();
+            })
+        });
     });
     it("class method findByIdAndRemove", () => {
 
