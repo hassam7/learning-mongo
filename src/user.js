@@ -9,7 +9,8 @@ const mongoose = require('mongoose');// importing mongoose
 const Schema = mongoose.Schema; //Creates Schema for our user model
 
 const UserSchema = new Schema({
-    name:String //Base String class inside Javascript
+    name:String, //Base String class inside Javascript
+    postCount:Number
 });
 
 const User = mongoose.model('user',UserSchema);
