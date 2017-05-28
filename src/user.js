@@ -7,6 +7,7 @@
 */
 const mongoose = require('mongoose'); // importing mongoose  
 const Schema = mongoose.Schema; //Creates Schema for our user model
+const PostSchema = require('./post');
 
 const UserSchema = new Schema({
     name: {
@@ -19,7 +20,8 @@ const UserSchema = new Schema({
         },
         required: [true, "Name is required."]
     }, //Base String class inside Javascript
-    postCount: Number
+    postCount: Number,
+    posts:[PostSchema]
 });
 
 const User = mongoose.model('user', UserSchema);
