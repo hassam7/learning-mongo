@@ -20,10 +20,12 @@ const UserSchema = new Schema({
         },
         required: [true, "Name is required."]
     }, //Base String class inside Javascript
-    postCount: Number,
-    posts:[PostSchema]
+    posts: [PostSchema]
 });
-
+//Using function instead of fat arrow so 'this' has right context
+UserSchema.virtual("postCount").get(function () {
+    return this.posts.length; //refers to current instance of Model
+}); //a Virtual field named postCount
 const User = mongoose.model('user', UserSchema);
 //^--> What collection is called inside MongoDB
 // if it does not exists mongodb creates 

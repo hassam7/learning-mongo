@@ -62,7 +62,7 @@ describe("Updating records", () => {
             }), done);
     });
 
-    it("A user can have their post count incremented by one", (done) => {
+    xit("A user can have their post count incremented by one", (done) => {
         //Model instance can be used to update only a single document
         //Use update when you have to perform some kind of logic operation
         User.update({
