@@ -20,8 +20,12 @@ const UserSchema = new Schema({
         },
         required: [true, "Name is required."]
     }, //Base String class inside Javascript
-    posts: [PostSchema],
-    likes:Number
+    posts: [PostSchema], //Sub documents
+    likes: Number,
+    blogPost: [{
+        type: Schema.Types.ObjectId,
+        ref: "blogPost"
+    }]
 });
 //Using function instead of fat arrow so 'this' has right context
 UserSchema.virtual("postCount").get(function () {
