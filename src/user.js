@@ -22,7 +22,7 @@ const UserSchema = new Schema({
     }, //Base String class inside Javascript
     posts: [PostSchema], //Sub documents
     likes: Number,
-    blogPost: [{
+    blogPost: [{        //association example
         type: Schema.Types.ObjectId,
         ref: "blogPost"
     }]
