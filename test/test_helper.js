@@ -9,8 +9,18 @@ before((done) => {
 
 })
 beforeEach((done) => {
-    mongoose.connection.collections.users.drop(() => {
-        //
-        done();
+    const {users,comments,blogposts} = mongoose.Connection.collections;
+    /*is same as
+        users = mongoose.Connection.collections.users
+        comments = mongoose.Connection.collections.comments
+        blogPosts = mongoose.Connection.collections.blogPosts
+    */
+    users.drop(() => {
+
+        comments.drop(()=>{
+            blogposts.drop(()=>{
+                done();
+            });
+        })
     });
 });
