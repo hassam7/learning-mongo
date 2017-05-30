@@ -9,7 +9,7 @@ before((done) => {
 
 })
 beforeEach((done) => {
-    const {users,comments,blogposts} = mongoose.Connection.collections;
+    const {users,comments,blogposts} = mongoose.connection.collections;
     /*is same as
         users = mongoose.Connection.collections.users
         comments = mongoose.Connection.collections.comments
