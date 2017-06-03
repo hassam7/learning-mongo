@@ -33,8 +33,30 @@ describe("Associations", () => {
         User.findOne({
             name: "Joe"
         }).populate("blogPost").then((user) => {
-            assert(user.blogPost[0].title ==="JS is fun");
+            assert(user.blogPost[0].title === "JS is fun");
             done();
         });
     });
-});
+    it("saves a full relation tree", (done) => {
+        User.findOne({name:"Joe"})
+        .populate({
+            path:"blogPost",
+            populate:{
+                path:'comments',
+                model:'comment',
+                populate:{
+                    path:'user',
+                    model:'user'
+                }
+            }
+        }).then((user)=>{
+            assert(user.name === "Joe");
+            assert(user.blogPost[0].title === "JS is fun");
+            assert(user.blogPost[0].comments[0].content === "Thanks for the great post!!!");
+            assert(user.blogPost[0].comments[0].user.name === "Joe");
+            
+            
+            done();
+        });
+    });
+}); 
