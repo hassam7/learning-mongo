@@ -33,7 +33,7 @@ describe("Reading users out of database", () => {
         });
     });
 
-    it.only(" can skip and limit the result set",(done)=>{
+    it(" can skip and limit the result set",(done)=>{
         User.find({})
         .sort({name:1}).
         skip(1).
