@@ -40,7 +40,7 @@ UserSchema.pre("remove",function(next){
         But it can cause cyclic dependencies. So it's better to use mongoose.
     */
     const BlogPost = mongoose.model('blogPost');
-    BlogPost.remove( { id : { $in : this.blogPost } } )
+    BlogPost.remove( { _id : { $in : this.blogPost } } )
      .then(()=>next());
     //go through all the blogPost and remove if the id field matches the id field of
     //this.blogPost
